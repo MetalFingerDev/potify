@@ -9,6 +9,7 @@ import { HiHome } from "react-icons/hi";
 
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
+import Library from "./Library";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -36,6 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <div >
+			<nav>
       <Box>
         <div >
           {routes.map((item) => (
@@ -45,6 +47,13 @@ const Sidebar: React.FC<SidebarProps> = ({
           ))}
         </div>
       </Box>
+			<Box>
+				<Library/>
+			</Box>
+			</nav>
+			<main>
+				{ children}
+			</main>
     </div>
   );
 };
