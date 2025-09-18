@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { usePathname } from "next/navigation";
@@ -12,52 +10,47 @@ import SidebarItem from "./SidebarItem";
 import Library from "./Library";
 
 interface SidebarProps {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
-  children
-}) => {
-  const pathname = usePathname();
+const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+	const pathname = usePathname();
 
-  const routes = useMemo(() => [
-    {
-      icon: HiHome,
-      label:'Home',
-      active: pathname !== '/search',
-      href: '/',
-    },
-    {
-      icon: BiSearch,
-      label: 'Search',
-      active: pathname === '/search',
-      href: '/search',
-    }
-  ], [pathname]);
+	const routes = useMemo(
+		() => [
+			{
+				icon: HiHome,
+				label: "Home",
+				active: pathname !== "/search",
+				href: "/",
+			},
+			{
+				icon: BiSearch,
+				label: "Search",
+				active: pathname === "/search",
+				href: "/search",
+			},
+		],
+		[pathname]
+	);
 
-  return (
-    <div >
+	return (
+		<div>
 			<nav>
-      <Box>
-        <div >
-          {routes.map((item) => (
-            <SidebarItem
-              key={item.label}
-              {...item}/>
-          ))}
-        </div>
-      </Box>
-			<Box>
-        <div >
-					<Library/>
-        </div>
-      </Box>
+				<Box>
+					<div>
+						{routes.map((item) => (
+							<SidebarItem key={item.label} {...item} />
+						))}
+					</div>
+				</Box>
+				<Box>
+					<Library />
+				</Box>
 			</nav>
-			<main>
-				{ children}
-			</main>
-    </div>
-  );
+			<main>{children}</main>
+		</div>
+	);
 };
-  
+
 export default Sidebar;
