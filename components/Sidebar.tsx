@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
 						<SidebarItem key={item.label} {...item} />
 					))}
 				</Box>
-				<Box className='overflow-y-auto flex-1'>
+				<Box className='overflow-y-auto h-full'>
 					<Library />
 				</Box>
 			</nav>
