@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 import Sidebar from "@/components/Sidebar";
+import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -18,12 +19,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider>
-			<html lang='en'>
-				<body className={`${font.className} antialiased`}>
-					<Sidebar>{children}</Sidebar>
-				</body>
-			</html>
-		</ClerkProvider>
+		<html lang='en'>
+			<body className={`${font.className} antialiased`}>
+				<ClerkProvider>
+					<ConvexClientProvider>
+						<Sidebar>{children}</Sidebar>
+					</ConvexClientProvider>
+				</ClerkProvider>
+			</body>
+		</html>
 	);
 }
