@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 import Sidebar from "@/components/Sidebar";
-import Home from "@/app/(site)/page";
 
-const font = Figtree({ subsets: ['latin']})
+const font = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Potify",
-  description: "Shitty spotify",
+	title: "Potify",
+	description: "Shitty spotify",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${font.className} antialiased`}
-      >
-        <Sidebar>
-          {children}
-        </Sidebar>
-        <Home />
-      </body>
-    </html>
-  );
+	return (
+		<ClerkProvider>
+			<html lang='en'>
+				<body className={`${font.className} antialiased`}>
+					<Sidebar>{children}</Sidebar>
+				</body>
+			</html>
+		</ClerkProvider>
+	);
 }

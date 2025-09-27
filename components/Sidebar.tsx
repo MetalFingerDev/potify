@@ -35,24 +35,20 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
 	);
 
 	return (
-		<div>
-			<nav>
+		<main>
+			<nav className='hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2'>
 				<Box>
-					<div>
-						{routes.map((item) => (
-							<SidebarItem key={item.label} {...item} />
-						))}
-					</div>
+					{routes.map((item) => (
+						<SidebarItem key={item.label} {...item} />
+					))}
 				</Box>
-				<Box>
+				<Box className='overflow-y-auto flex-1'>
 					<Library />
 				</Box>
 			</nav>
-			<main>{children}</main>
-		</div>
+			<div className='flex-1 overflow-y-auto p-2'>{children}</div>
+		</main>
 	);
 };
 
 export default Sidebar;
-
-//test comment

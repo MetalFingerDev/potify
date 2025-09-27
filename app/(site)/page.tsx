@@ -1,9 +1,21 @@
-
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Main</h1>
-    </div>
-  );
+	return (
+		<div>
+			<div className='flex justify-end'>
+				<SignedOut>
+					<div className='flex gap-2'>
+						<SignInButton />
+					</div>
+				</SignedOut>
+
+				<SignedIn>
+					<div className='flex gap-2'>
+						<UserButton />
+					</div>
+				</SignedIn>
+			</div>
+		</div>
+	);
 }
